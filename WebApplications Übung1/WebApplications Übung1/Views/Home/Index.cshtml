@@ -1,0 +1,139 @@
+﻿@model List<WebApplications_Übung1.Models.Item>
+@using WebApplications_Übung1.Models
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Startseite</h1>
+
+@*<div class="slideshow-container">
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="~/Content/Images/Smartphone.jpg" style="width:100%" />
+        <div class="text">Iphone 11</div>
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="~/Content/Images/Hoodie.jpg" style="width:100%" />
+        <div class="text">Hoodie</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="~/Content/Images/Werkzeug.jpg" style="width:100%" />
+        <div class="text">Bohrer</div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br />
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+</div>*@
+
+
+
+<div class="container2">
+    <a href="/Shop/Smartphone">
+        <img class="round" src="~/Content/Images/Smartphone.jpg" alt="dieses Bild ist nicht verfügbar" width="200" height="200" />
+    </a>
+    @Html.ActionLink("Smartphones", "Smartphone", "Shop")
+
+    <a href="/Shop/Kleidung">
+        <img class="round" src="~/Content/Images/Kleidung.jpg" alt="dieses Bild ist nicht verfügbar" width="200" height="200" />
+    </a>
+    @Html.ActionLink("Fresher Style", "Kleidung", "Shop")
+
+    <a href="/Shop/Gartenausstattung">
+        <img class="round" src="~/Content/Images/Gartenausstattung.jpg" alt="dieses Bild ist nicht verfügbar" width="200" height="200" />
+    </a>
+    @Html.ActionLink("Gartenausstatung", "Gartenausstatung", "Shop")
+
+    <a href="/Shop/Werkzeug">
+        <img class="round" src="~/Content/Images/Werkzeug.jpg" alt="dieses Bild ist nicht verfügbar" width="200" height="200" />
+    </a>
+    @Html.ActionLink("Werkzeug", "Werkzeug", "Shop")
+
+    <a href="/Shop/Spiele">
+        <img class="round" src="~/Content/Images/Konsolen.jpg" alt="dieses Bild ist nicht verfügbar" width="200" height="200" />
+    </a>
+    @Html.ActionLink("Spiele", "Spiele", "Shop")
+</div>
+
+<h2>Die neuesten Artikel</h2>
+
+@if((Model != null) && (Model.Count > 0)){
+<table align="center">
+    @foreach (Item i in Model)
+    {
+        <tr>
+            <td><img class="image" src="@i.Bildpfad" alt="dieses Bild ist nicht verfügbar" width="250" height="250" /></td>
+            <td>
+                <ul>
+                    <li><font size="6">@i.Item_name</font></li>
+                    <li><font size="4">Preis: @i.Preis€</font></li>
+                    <li><font size="4">Model: @i.Model</font></li>
+                    <li><font size="4">Kategorie: @i.Kategorie</font></li>
+                    <li><font size="4">Marke: @i.Marke</font></li>
+                </ul>
+            </td>
+        </tr>
+    }
+</table>
+}
+
+@*<table align="center">
+        <tr>
+            <td><img class="image" src="~/Content/Images/Smartphone.jpg" alt="dieses Bild ist nicht verfügbar" width="250" height="250" /></td>
+            <td>
+                <ul>
+                    <li><font size="6">Iphone 11 Pro White</font></li>
+                    <li><font size="4">1.014,90€</font></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><img class="image" src="~/Content/Images/Hoodie.jpg" alt="dieses Bild ist nicht verfügbar" width="250" height="250" /></td>
+            <td>
+                <ul>
+                    <li><font size="6">Hoodie</font></li>
+                    <li><font size="4">50€</font></li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td><img class="image" src="~/Content/Images/Kleidung.jpg" alt="dieses Bild ist nicht verfügbar" width="250" height="250" /></td>
+            <td>
+                <ul>
+                    <li><font size="6">Hoodie</font></li>
+                    <li><font size="4">50€</font></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><img class="image" src="~/Content/Images/switch.jpg" alt="dieses Bild ist nicht verfügbar" width="250" height="250" /></td>
+            <td>
+                <ul>
+                    <li><font size="6">Switch</font></li>
+                    <li><font size="4">299,99€</font></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><img class="image" src="~/Content/Images/Werkzeug.jpg" alt="dieses Bild ist nicht verfügbar" width="250" height="250" /></td>
+            <td>
+                <ul>
+                    <li><font size="6">Bohrmaschine</font></li>
+                    <li><font size="4">29,85€</font></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+*@
+<br />
