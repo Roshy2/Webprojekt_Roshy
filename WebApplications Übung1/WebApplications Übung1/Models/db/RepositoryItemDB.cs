@@ -57,6 +57,7 @@ namespace WebApplications_Übung1.Models.db
                             Item_name = Convert.ToString(reader["item_name"]),
                             Preis = Convert.ToInt32(reader["preis"]),
                             Model = Convert.ToString(reader["model"]),
+                            Kategorie_ID = Convert.ToInt32(reader["kategorie_id"]),
                             Kategorie = Convert.ToString(reader["kategorie"]),
                             Marke = Convert.ToString(reader["marke"]),
                             Bildpfad = Convert.ToString(reader["bildpfad"])
@@ -66,9 +67,38 @@ namespace WebApplications_Übung1.Models.db
             return items;
         }
 
-        public Item GetKategorie()
+        public List<Item> GetItemsByCategory(int kategorie_id)
         {
-            throw new NotImplementedException();
+            List<Item> items = new List<Item>();
+
+            DbCommand cmdGetKategorie = this._connection.CreateCommand();
+            cmdGetKategorie.CommandText = "Select * From item Where kategorie_id=@ikategorie_id";
+
+            DbParameter paramKategorie = cmdGetKategorie.CreateParameter();
+            paramKategorie.ParameterName = "ikategorie_id";
+            paramKategorie.Value = kategorie_id;
+            paramKategorie.DbType = DbType.Int32;
+
+            cmdGetKategorie.Parameters.Add(paramKategorie);
+
+            using(DbDataReader reader = cmdGetKategorie.ExecuteReader())
+            {
+                if (!reader.HasRows) { return null; }
+                while (reader.Read())
+                {
+                    items.Add( new Item
+                    {
+                        Item_name = Convert.ToString(reader["item_name"]),
+                        Preis = Convert.ToInt32(reader["preis"]),
+                        Model = Convert.ToString(reader["model"]),
+                        Kategorie = Convert.ToString(reader["kategorie"]),
+                        Marke = Convert.ToString(reader["marke"]),
+                        Bildpfad = Convert.ToString(reader["bildpfad"])
+                    });
+                }
+                
+            }
+            return items;
         }
     }
 }

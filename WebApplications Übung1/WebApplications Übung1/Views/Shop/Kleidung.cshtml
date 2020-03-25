@@ -1,7 +1,32 @@
-﻿
+﻿@model List<WebApplications_Übung1.Models.Item>
+@using WebApplications_Übung1.Models
 @{
     ViewBag.Title = "Kleidung";
 }
 
 <h2>Kleidung</h2>
 
+@if ((Model != null) && (Model.Count > 0))
+{
+    <table align="center">
+        @foreach (Item i in Model)
+        {
+            <tr>
+                <td><img class="image" src="@i.Bildpfad" alt="dieses Bild ist nicht verfügbar" width="250" height="250" /></td>
+                <td>
+                    <ul>
+                        <li><font size="6">@i.Item_name</font></li>
+                        <li><font size="4">Preis: @i.Preis€</font></li>
+                        <li><font size="4">Model: @i.Model</font></li>
+                        <li><font size="4">Marke: @i.Marke</font></li>
+                    </ul>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Es gibt zur Zeit keine Items</p>
+}
+<br />

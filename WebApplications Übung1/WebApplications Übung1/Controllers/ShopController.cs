@@ -23,29 +23,59 @@ namespace WebApplications_Übung1.Controllers
             return View(items);
         }
 
-        public ActionResult Smartphone()
+        public ActionResult Smartphone(int kategorie_id = 1)
         {
-            return View();
+            List<Item>  items;
+            rep = new RepositoryItemDB();
+            rep.Open();
+            items = rep.GetItemsByCategory(kategorie_id);
+            rep.Close();
+
+            return View(items);
         }
 
-        public ActionResult Kleidung()
+        public ActionResult Kleidung(int kategorie_id = 2)
         {
-            return View();
+            List<Item> items;
+            rep = new RepositoryItemDB();
+            rep.Open();
+            items = rep.GetItemsByCategory(kategorie_id);
+            rep.Close();
+
+            return View(items);
         }
 
-        public ActionResult Gartenausstattung()
+        public ActionResult Gartenausstattung(int kategorie_id = 3)
         {
-            return View();
+            List<Item> items;
+            rep = new RepositoryItemDB();
+            rep.Open();
+            items = rep.GetItemsByCategory(kategorie_id);
+            rep.Close();
+
+            return View(items);
         }
 
-        public ActionResult Werkzeug()
+        public ActionResult Werkzeug(int kategorie_id = 4)
         {
-            return View();
+            List<Item> items;
+            rep = new RepositoryItemDB();
+            rep.Open();
+            items = rep.GetItemsByCategory(kategorie_id);
+            rep.Close();
+
+            return View(items);
         }
 
-        public ActionResult Spiele()
+        public ActionResult Spiele(int kategorie_id = 5)
         {
-            return View();
+            List<Item> items;
+            rep = new RepositoryItemDB();
+            rep.Open();
+            items = rep.GetItemsByCategory(kategorie_id);
+            rep.Close();
+
+            return View(items);
         }
 
         public ActionResult AllArticels()

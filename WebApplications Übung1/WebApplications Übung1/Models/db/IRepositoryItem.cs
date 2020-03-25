@@ -11,6 +11,6 @@ namespace WebApplications_Übung1.Models.db
         void Open();
         void Close();
         List<Item> GetAllItem();
-        Item GetKategorie();
+        List<Item> GetItemsByCategory(int kategorie_id);
     }
 }
